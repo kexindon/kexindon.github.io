@@ -5,59 +5,68 @@
   <title>Kexin's Photography</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* --------- Global Reset --------- */
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #fff;
       font-family: 'Helvetica Neue', sans-serif;
-      color: #111;
-      line-height: 1.6;
+      background: #fff;
     }
 
     header {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 50px 20px 30px;
     }
 
     header h1 {
-      font-size: 3rem;
-      font-weight: bold;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      padding: 40px 60px;
+    header p {
+      color: #666;
     }
 
-    .gallery img {
+    .masonry {
+      column-count: 3; /* 三列 */
+      column-gap: 16px;
+      padding: 0 16px;
+    }
+
+    .masonry-item {
+      margin-bottom: 16px;
+      break-inside: avoid;
+      transition: transform 0.3s ease;
+    }
+
+    .masonry-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .masonry-item img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      transition: transform 0.5s ease, opacity 1s ease;
-      opacity: 0;
-    }
-
-    .fade-in {
-      opacity: 1 !important;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      display: block;
     }
 
     footer {
       text-align: center;
-      padding: 40px;
+      padding: 40px 10px;
+      color: #aaa;
       font-size: 0.9rem;
-      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .masonry {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .masonry {
+        column-count: 1;
+      }
     }
   </style>
 </head>
@@ -65,35 +74,21 @@
 
   <header>
     <h1>Kexin's Photography</h1>
-    <p>Moments captured through my lens 🎞️</p>
+    <p>Snaps of light, space, and moments ✨</p>
   </header>
 
-  <section class="gallery">
-    <img src="your-photo1.jpeg" alt="photo 1" class="lazy">
-    <img src="your-photo2.jpeg" alt="photo 2" class="lazy">
-    <img src="your-photo3.jpeg" alt="photo 3" class="lazy">
-    <img src="your-photo4.jpeg" alt="photo 4" class="lazy">
-    <!-- Add as many as you like -->
+  <section class="masonry">
+    <div class="masonry-item"><img src="photo1.jpg" alt="Photo 1"></div>
+    <div class="masonry-item"><img src="photo2.jpg" alt="Photo 2"></div>
+    <div class="masonry-item"><img src="photo3.jpg" alt="Photo 3"></div>
+    <div class="masonry-item"><img src="photo4.jpg" alt="Photo 4"></div>
+    <div class="masonry-item"><img src="photo5.jpg" alt="Photo 5"></div>
+    <!-- Add more as needed -->
   </section>
 
   <footer>
     &copy; 2025 Kexin Dong. All rights reserved.
   </footer>
-
-  <script>
-    // Fade in on scroll animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-        }
-      });
-    });
-
-    document.querySelectorAll('.lazy').forEach(img => {
-      observer.observe(img);
-    });
-  </script>
 
 </body>
 </html>
