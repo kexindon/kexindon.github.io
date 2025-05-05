@@ -2,45 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kexin Dong</title>
+  <title>Kexin's Photography</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: "Helvetica Neue", sans-serif;
+    /* --------- Global Reset --------- */
+    * {
       margin: 0;
       padding: 0;
-      background: #fff;
-      color: #111;
+      box-sizing: border-box;
     }
-    .hero {
-      background-image: url('your-photo.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3em;
+
+    body {
+      background-color: #fff;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    header h1 {
+      font-size: 3rem;
       font-weight: bold;
     }
-    .section {
-      padding: 80px 10%;
-      text-align: center;
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      padding: 40px 60px;
     }
-    img {
+
+    .gallery img {
       width: 100%;
+      height: auto;
       border-radius: 8px;
+      transition: transform 0.5s ease, opacity 1s ease;
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1 !important;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <div class="hero">Kexin Dong</div>
 
-  <div class="section">
-    <h2>About Me</h2>
-    <p>I’m a PhD student in Biology at MIT, exploring tumor evolution and CRISPR screens.</p>
-    <img src="lab-photo.jpg" alt="lab image">
-  </div>
+  <header>
+    <h1>Kexin's Photography</h1>
+    <p>Moments captured through my lens 🎞️</p>
+  </header>
+
+  <section class="gallery">
+    <img src="your-photo1.jpeg" alt="photo 1" class="lazy">
+    <img src="your-photo2.jpeg" alt="photo 2" class="lazy">
+    <img src="your-photo3.jpeg" alt="photo 3" class="lazy">
+    <img src="your-photo4.jpeg" alt="photo 4" class="lazy">
+    <!-- Add as many as you like -->
+  </section>
+
+  <footer>
+    &copy; 2025 Kexin Dong. All rights reserved.
+  </footer>
+
+  <script>
+    // Fade in on scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    });
+
+    document.querySelectorAll('.lazy').forEach(img => {
+      observer.observe(img);
+    });
+  </script>
+
 </body>
 </html>
