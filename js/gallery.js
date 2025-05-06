@@ -5,30 +5,34 @@ const gallery = document.querySelector('.masonry');
 const COL_COUNT = 2; 
 const MARGIN_VW = 6; 
 
-function addImage(num) {
-  const item = document.createElement('div');
-  item.className = 'masonry-item';
-  item.dataset.id = `photo${num}`;
-  item.innerHTML = `
-    <div class="image-wrapper">
-      <img src="photos/${num}.jpeg" alt="Photo ${num}">
-      <button class="like-btn">❤️ <span class="count">0</span></button>
-    </div>`;
-  gallery.appendChild(item);
-}
-
-async function preload(num) {
-  const src = `photos/${num}.jpeg`;
-  try {
-    const resp = await fetch(src, { method: 'HEAD' });
-    if (resp.ok) {
-      addImage(num);
-      preload(num + 1);   // recurse
-    }
-  } catch (_) {
-    // network error => stop
+function pad(n){
+    return n.toString().padStart(4, '0');   // 1 -> "0001"
   }
-}
+  
+  async function preload(num){
+    const name = pad(num);                      // <──★
+    const src  = `photos/${name}.jpeg`;         // <──★
+    try{
+      const resp = await fetch(src, {method:'HEAD'});
+      if(resp.ok){
+        addImage(name);        // 传四位名
+        preload(num+1);        // 递归下一个
+      }
+    }catch(e){ /* stop on error */ }
+  }
+  
+  function addImage(name){
+    const item = document.createElement('div');
+    item.className = 'masonry-item';
+    item.dataset.id = `photo${name}`;
+    item.innerHTML = `
+      <div class="image-wrapper">
+        <img src="photos/${name}.jpeg" alt="Photo ${name}">
+        <button class="like-btn">❤️ <span class="count">0</span></button>
+      </div>`;
+    gallery.appendChild(item);
+  }
+  
 
 function initLikes() {
   gallery.addEventListener('click', e => {
