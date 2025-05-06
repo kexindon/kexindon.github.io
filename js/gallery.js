@@ -1,28 +1,29 @@
 /* gallery.js — throttle probe, non‑blocking lazy load */
-const L = document.getElementById('col-left');
-const R = document.getElementById('col-right');
-const pad = n => n.toString().padStart(4,'0');
+const BATCH = 10;                  // probes per round
+const MISS_MAX = 20;               // stop after 20 consecutive misses
+let idx = 1;                       // current image index
+let miss = 0;                      // consecutive miss counter
+let toggle = true;                 // alternate columns
 
-/* 淡入上浮 */
-const io = new IntersectionObserver(es=>{
-  es.forEach(e=>{
-    if(e.isIntersecting){
+// fade‑in + float up
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
       e.target.classList.add('in-view');
       io.unobserve(e.target);
     }
   });
-},{rootMargin:'0px 0px -40px 0px'});
+}, { rootMargin: '0px 0px -40px 0px' });
 
-/* 参数 */
-const BATCH = 10;          // 每轮探测数量
-let idx = 1;               // 当前编号
-let toggle = true;         // 左右列交替
+// pad number to 4 digits
+const pad = n => n.toString().padStart(4, '0');
 
-function inject(src){
+// inject <div><img></div> into left / right column
+function inject(src, L, R) {
   const box = document.createElement('div');
   box.className = 'photo-box';
   const img = document.createElement('img');
-  img.loading = 'lazy';
+  img.loading = 'lazy';            // native lazy‑load
   img.src = src;
   box.appendChild(img);
   (toggle ? L : R).appendChild(box);
@@ -30,25 +31,36 @@ function inject(src){
   io.observe(box);
 }
 
-function probeBatch(done){
+// probe a batch of images
+function probeBatch(done, L, R) {
   let pending = 0;
-  for(let k=0;k<BATCH;k++){
+  for (let k = 0; k < BATCH; k++) {
     const num = pad(idx++);
     const src = `photos/${num}.jpeg`;
     pending++;
     const probe = new Image();
-    probe.onload = ()=>{ inject(src); if(--pending===0) done(); };
-    probe.onerror = ()=>{ if(--pending===0) done(); };
+    probe.onload = () => {
+      inject(src, L, R);           // success → render image
+      miss = 0;                    // reset miss counter
+      if (--pending === 0) done();
+    };
+    probe.onerror = () => {
+      miss++;                      // count only errors
+      if (--pending === 0) done();
+    };
     probe.src = src;
   }
 }
 
-/* 递归批处理，直到 N 连续 miss 停止 */
-let miss = 0;
-const MISS_MAX = 1000;
-function loop(){
-  if(miss >= MISS_MAX) return;
-  probeBatch(()=>{ miss += BATCH; loop(); });   // 先假设都 miss
+// recursive loop until MISS_MAX reached
+function loop(L, R) {
+  if (miss >= MISS_MAX) return;
+  probeBatch(() => loop(L, R), L, R);
 }
 
-document.addEventListener('DOMContentLoaded', loop);
+// wait for DOM, then start
+document.addEventListener('DOMContentLoaded', () => {
+  const L = document.getElementById('col-left');
+  const R = document.getElementById('col-right');
+  loop(L, R);
+});
