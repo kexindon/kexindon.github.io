@@ -1,43 +1,26 @@
-// js/gallery.js  —— Masonry auto‑loader (4‑digit names)
+/* js/gallery.js  -  Masonry auto‑loader (no like button) */
 const gallery = document.querySelector('.masonry');
-const pad = n => n.toString().padStart(4, '0');
+const pad = n => n.toString().padStart(4, '0');   // 0001 → 4‑digit names
 
-function tryLoad(num){
-  const name = pad(num);            // e.g. "0001"
-  const src  = `photos/${name}.jpeg`;
+function tryLoad(n){
+  const file = pad(n);                 // "0001"
+  const src  = `photos/${file}.jpeg`;
 
-  const tester = new Image();
-  tester.onload = () => {           // 只要加载成功就加入页面
-    addImage(name, src);
-    tryLoad(num + 1);               // 递归下一张
-  };
-  tester.onerror = () => { /* 停止递归 */ };
-  tester.src = src;                 // 开始测试
+  // 用 <img> 试加载；成功就插入并递归下一个
+  const probe = new Image();
+  probe.onload  = () => { addImage(src); tryLoad(n + 1); };
+  probe.onerror = () => {};            // 404 → 停止
+  probe.src = src;
 }
 
-function addImage(name, src){
+function addImage(src){
   const div = document.createElement('div');
   div.className = 'masonry-item';
-  div.dataset.id = `photo${name}`;
   div.innerHTML = `
     <div class="image-wrapper">
-      <img src="${src}" alt="Photo ${name}">
-      <button class="like-btn">❤️ <span class="count">0</span></button>
+      <img src="${src}" alt="">
     </div>`;
   gallery.appendChild(div);
-  initLike(div);
-}
-
-function initLike(div){
-  const btn  = div.querySelector('.like-btn');
-  const span = btn.querySelector('.count');
-  const id   = div.dataset.id;
-  span.textContent = localStorage.getItem(id) || '0';
-  btn.onclick = () => {
-    let c = parseInt(span.textContent, 10) + 1;
-    span.textContent = c;
-    localStorage.setItem(id, c);
-  };
 }
 
 document.addEventListener('DOMContentLoaded', () => tryLoad(1));
