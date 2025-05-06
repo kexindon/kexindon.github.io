@@ -56,7 +56,7 @@ body {
 .masonry{
   column-count:2;
   column-gap:16px;
-  max-width:50vw;  
+  max-width:60vw;  
   margin:0 auto; 
 }
 @media(max-width:768px){
@@ -75,7 +75,6 @@ body {
   to{opacity:1;transform:translateY(0);}
 }
 
-/* 悬浮放大 */
 .image-wrapper img{
   transition:transform .4s ease;
 }
