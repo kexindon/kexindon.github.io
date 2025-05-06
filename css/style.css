@@ -81,3 +81,30 @@ body {
 .masonry-item:hover img{
   transform:scale(1.05);
 }
+
+/* ===== Compact Waterfall (two columns, no gaps) ===== */
+.gallery-wrapper{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  max-width:50vw;
+  margin:0 auto;
+}
+.col{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  width:calc(50% - 8px); /* 两列+中间16px */
+}
+@media(max-width:768px){
+  .gallery-wrapper{max-width:80vw;}
+  .col{width:100%;}
+}
+
+/* 图片动画 */
+.photo-box{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.photo-box.in-view{opacity:1;transform:translateY(0);}
+.photo-box img{width:100%;border-radius:6px;display:block;transition:transform .4s;}
+.photo-box:hover img{transform:scale(1.05);}
+
+

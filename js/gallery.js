@@ -1,26 +1,48 @@
-/* js/gallery.js  -  Masonry auto‑loader (no like button) */
-const gallery = document.querySelector('.masonry');
-const pad = n => n.toString().padStart(4, '0');   // 0001 → 4‑digit names
+/* gallery.js — alternate columns + robust endless loader */
+const leftCol  = document.getElementById('col-left');
+const rightCol = document.getElementById('col-right');
+const pad      = n => n.toString().padStart(4, '0');
 
-function tryLoad(n){
-  const file = pad(n);                 // "0001"
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in-view');
+      io.unobserve(e.target);
+    }
+  });
+},{rootMargin:"0px 0px -40px 0px"});
+
+/* 迭代变量 */
+let i = 1;          // 当前尝试编号
+let miss = 0;       // 连续 miss 计数
+const MISS_MAX = 200;   // 连续 200 个 404 即视为结束
+let toggle = true;  // true->左列 false->右列 交替
+
+function next(){
+  if(miss >= MISS_MAX) return;       // 终止条件
+
+  const file = pad(i++);
   const src  = `photos/${file}.jpeg`;
+  const img  = new Image();
+  img.loading = "lazy";
+  img.src = src;
 
-  // 用 <img> 试加载；成功就插入并递归下一个
-  const probe = new Image();
-  probe.onload  = () => { addImage(src); tryLoad(n + 1); };
-  probe.onerror = () => {};            // 404 → 停止
-  probe.src = src;
+  img.onload = ()=>{
+    miss = 0;                        // 重置 miss
+    const box = document.createElement('div');
+    box.className = 'photo-box';
+    box.appendChild(img);
+
+    (toggle ? leftCol : rightCol).appendChild(box);
+    toggle = !toggle;                // 交替列
+    io.observe(box);
+    setTimeout(next,0);              // 继续
+  };
+
+  img.onerror = ()=>{
+    miss++;
+    setTimeout(next,0);              // 跳过缺号继续
+  };
 }
 
-function addImage(src){
-  const div = document.createElement('div');
-  div.className = 'masonry-item';
-  div.innerHTML = `
-    <div class="image-wrapper">
-      <img src="${src}" alt="">
-    </div>`;
-  gallery.appendChild(div);
-}
-
-document.addEventListener('DOMContentLoaded', () => tryLoad(1));
+document.addEventListener('DOMContentLoaded',next);
