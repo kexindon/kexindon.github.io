@@ -2,92 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kexin's Photography</title>
+  <title>Kexin Dong | Biology PhD & Photographer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 共用样式 -->
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #fff;
-    }
-
-    header {
+    /* 仅首页额外微调 */
+    .hero {
+      padding: 60px 0 40px;
       text-align: center;
-      padding: 50px 20px 30px;
     }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0 0 12px;
+      font-weight: 700;
     }
-
-    header p {
+    .hero h2 {
+      font-size: 1.3rem;
+      font-weight: 400;
       color: #666;
+      margin: 0 0 28px;
     }
-
-    .masonry {
-      column-count: 3; /* 三列 */
-      column-gap: 16px;
-      padding: 0 16px;
-    }
-
-    .masonry-item {
-      margin-bottom: 16px;
-      break-inside: avoid;
-      transition: transform 0.3s ease;
-    }
-
-    .masonry-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-
-    .masonry-item img {
-      width: 100%;
-      height: auto;
+    .btn-link {
+      display: inline-block;
+      padding: 10px 22px;
+      margin: 6px;
       border-radius: 6px;
-      display: block;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .25s;
     }
-
-    footer {
-      text-align: center;
-      padding: 40px 10px;
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .masonry {
-        column-count: 2;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .masonry {
-        column-count: 1;
-      }
-    }
+    .btn-dark  { background:#000;color:#fff; }
+    .btn-dark:hover { background:#333; }
+    .btn-light { background:#f0f0f0;color:#000; }
+    .btn-light:hover { background:#ddd; }
+    /* 内容段落 */
+    section { margin: 60px 0; line-height:1.6; }
+    h3 { font-size:1.4rem; margin-bottom:16px; }
+    ul { margin-left:18px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Kexin's Photography</h1>
-    <p>Snaps of light, space, and moments ✨</p>
+  <!-- 共享黑色导航条 -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="photography.html">Photography</a>
+  </nav>
+
+  <!-- 顶部个人简介区 -->
+  <header class="hero">
+    <h1>Kexin Dong</h1>
+    <h2>Biology PhD @ MIT · Tumor Evolution Researcher · Avid Photographer</h2>
+
+    <a class="btn-dark"  href="https://www.linkedin.com/in/kexindon" target="_blank">LinkedIn</a>
+    <a class="btn-light" href="photography.html">📸 View Photography</a>
   </header>
 
-  <section class="masonry">
-    <div class="masonry-item"><img src="photos/your-photo1.jpeg" alt="Photo 1"></div>
-    <div class="masonry-item"><img src="photos/your-photo2.jpeg" alt="Photo 2"></div>
-    <div class="masonry-item"><img src="photos/your-photo3.jpeg" alt="Photo 3"></div>
-    <div class="masonry-item"><img src="photos/your-photo4.jpeg" alt="Photo 4"></div>
-    <div class="masonry-item"><img src="photos/your-photo5.jpeg" alt="Photo 5"></div>
-    <!-- Add more as needed -->
+  <!-- About -->
+  <section>
+    <h3>About Me</h3>
+    <p>
+      I’m a first‑year PhD student in Biology at MIT, focusing on genetics and tumor evolution.
+      My research combines <strong>CRISPR screens</strong>, single‑cell sequencing and machine learning
+      to unravel how cancer adapts under therapeutic pressure.
+    </p>
+    <p>
+      Beyond the lab, I love capturing urban moments and natural light with my Fujifilm camera.
+      Photography helps me keep a keen eye for detail—a skill that benefits both science and art.
+    </p>
   </section>
 
-  <footer>
-    &copy; 2025 Kexin Dong. All rights reserved.
+  <!-- Interests -->
+  <section>
+    <h3>Research Interests</h3>
+    <ul>
+      <li>Cancer functional genomics &amp; tumor heterogeneity</li>
+      <li>CRISPR / Base‑ & Prime‑editing technologies</li>
+      <li>Single‑cell multi‑omics</li>
+      <li>Machine learning for genotype‑phenotype mapping</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer style="text-align:center;margin:60px 0;color:#aaa;font-size:.9rem;">
+    © 2025 Kexin Dong. Built with GitHub Pages & ❤︎
   </footer>
 
 </body>
