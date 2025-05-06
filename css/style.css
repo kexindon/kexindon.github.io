@@ -23,7 +23,6 @@ body {
   }
   nav a:hover { opacity: .7; }
   
-  
   /* Masonry 两列布局 */
   .masonry {
     column-count: 2;
@@ -54,20 +53,19 @@ body {
     .masonry { column-count: 1; }
   }
   
-  /* Masonry 两列 + 居中窄版 */
 .masonry{
   column-count:2;
   column-gap:16px;
-  max-width:50vw;   /* ≈半屏宽 */
-  margin:0 auto;    /* 居中 */
+  max-width:50vw;  
+  margin:0 auto; 
 }
 @media(max-width:768px){
-  .masonry{max-width:80vw;}          /* 平板放宽 */
+  .masonry{max-width:80vw;}        
 }
 @media(max-width:480px){
-  .masonry{column-count:1;max-width:90vw;}  /* 手机 */
+  .masonry{column-count:1;max-width:90vw;} 
 }
-/* 初始淡入上浮 */
+
 .masonry-item{
   opacity:0;
   transform:translateY(20px);
