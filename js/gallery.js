@@ -1,48 +1,54 @@
-/* gallery.js — alternate columns + robust endless loader */
-const leftCol  = document.getElementById('col-left');
-const rightCol = document.getElementById('col-right');
-const pad      = n => n.toString().padStart(4, '0');
+/* gallery.js — throttle probe, non‑blocking lazy load */
+const L = document.getElementById('col-left');
+const R = document.getElementById('col-right');
+const pad = n => n.toString().padStart(4,'0');
 
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
+/* 淡入上浮 */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('in-view');
       io.unobserve(e.target);
     }
   });
-},{rootMargin:"0px 0px -40px 0px"});
+},{rootMargin:'0px 0px -40px 0px'});
 
-/* 迭代变量 */
-let i = 1;          // 当前尝试编号
-let miss = 0;       // 连续 miss 计数
-const MISS_MAX = 200;   // 连续 200 个 404 即视为结束
-let toggle = true;  // true->左列 false->右列 交替
+/* 参数 */
+const BATCH = 10;          // 每轮探测数量
+let idx = 1;               // 当前编号
+let toggle = true;         // 左右列交替
 
-function next(){
-  if(miss >= MISS_MAX) return;       // 终止条件
-
-  const file = pad(i++);
-  const src  = `photos/${file}.jpeg`;
-  const img  = new Image();
-  img.loading = "lazy";
+function inject(src){
+  const box = document.createElement('div');
+  box.className = 'photo-box';
+  const img = document.createElement('img');
+  img.loading = 'lazy';
   img.src = src;
-
-  img.onload = ()=>{
-    miss = 0;                        // 重置 miss
-    const box = document.createElement('div');
-    box.className = 'photo-box';
-    box.appendChild(img);
-
-    (toggle ? leftCol : rightCol).appendChild(box);
-    toggle = !toggle;                // 交替列
-    io.observe(box);
-    setTimeout(next,0);              // 继续
-  };
-
-  img.onerror = ()=>{
-    miss++;
-    setTimeout(next,0);              // 跳过缺号继续
-  };
+  box.appendChild(img);
+  (toggle ? L : R).appendChild(box);
+  toggle = !toggle;
+  io.observe(box);
 }
 
-document.addEventListener('DOMContentLoaded',next);
+function probeBatch(done){
+  let pending = 0;
+  for(let k=0;k<BATCH;k++){
+    const num = pad(idx++);
+    const src = `photos/${num}.jpeg`;
+    pending++;
+    const probe = new Image();
+    probe.onload = ()=>{ inject(src); if(--pending===0) done(); };
+    probe.onerror = ()=>{ if(--pending===0) done(); };
+    probe.src = src;
+  }
+}
+
+/* 递归批处理，直到 N 连续 miss 停止 */
+let miss = 0;
+const MISS_MAX = 1000;
+function loop(){
+  if(miss >= MISS_MAX) return;
+  probeBatch(()=>{ miss += BATCH; loop(); });   // 先假设都 miss
+}
+
+document.addEventListener('DOMContentLoaded', loop);
