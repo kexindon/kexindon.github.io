@@ -82,7 +82,6 @@ body {
   transform:scale(1.05);
 }
 
-/* ===== Compact Waterfall (two columns, no gaps) ===== */
 .gallery-wrapper{
   display:flex;
   justify-content:center;
@@ -101,53 +100,52 @@ body {
   .col{width:100%;}
 }
 
-/* 图片动画 */
 .photo-box{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
 .photo-box.in-view{opacity:1;transform:translateY(0);}
 .photo-box img{width:100%;border-radius:6px;display:block;transition:transform .4s;}
 .photo-box:hover img{transform:scale(1.05);}
 
-/* ======= Footer ======= */
-.site-footer{
-  margin-top: 6vh;          /* 与图片流分隔一点空白 */
-  padding: 6vh 0;
-  background:#000;
-  color:#fff;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:2vh;
+.site-footer {
+  padding: 3vh 0;
+  background: #000;
+  color: #fff;
+  text-align: center;
   font-family: "Nunito", sans-serif;
-  font-size:1.1rem;
-  letter-spacing:0.03em;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
 }
 
-/* 社媒按钮 */
-.site-footer .social a{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  width:42px;
-  height:42px;
-  margin:0 0.4rem;
-  border:1px solid #fff;
-  border-radius:50%;
-  transition:transform 0.3s ease, background 0.3s ease;
+.site-footer .brand {
+  margin-bottom: 1vh;
+  font-weight: 600;
 }
 
-/* 图标颜色 */
-.site-footer .social i{
-  font-size:18px;
-  color:#fff;
+.site-footer .social {
+  margin-top: 1vh;
 }
 
-/* 悬浮效果 */
-.site-footer .social a:hover{
-  background:#fff;
-  transform:translateY(-4px);
-}
-.site-footer .social a:hover i{
-  color:#000;
+.site-footer .social a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 6px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
+.site-footer .social i {
+  font-size: 16px;
+  color: #fff;
+}
+
+.site-footer .social a:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+
+.site-footer .social a:hover i {
+  color: #000;
+}
