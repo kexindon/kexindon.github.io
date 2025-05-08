@@ -176,7 +176,7 @@ body {
   width: 36px;
   height: 36px;
   margin: 0 4px;
-  border: 1px solid #fff;
+  border: 1.5px solid #fff;
   border-radius: 50%;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -193,4 +193,112 @@ body {
 
 .fixed-footer .social a:hover i {
   color: #fff;
+}
+
+
+
+.footer,
+.footer nav,
+.footer .social,
+.footer .social a {
+  background: transparent !important;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0vh;
+  left: 4vw;
+  justify-content: start;
+  background: transparent;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  z-index: 999;
+  backdrop-filter: none;
+}
+
+.footer .social a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  border: 1.5px solid #000;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.footer .social i {
+  font-size: 16px;
+  color: #000;
+}
+
+.footer .social a:hover {
+  background: #4a4a4a;
+  transform: translateY(-3px);
+}
+
+.footer .social a:hover i {
+  color: #000;
+}
+
+.education-section {
+  padding: 6vh 6vw;
+  background: #f9f9f9;
+  color: #111;
+}
+
+.education-section h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+
+.education-entry {
+  margin-bottom: 2.5rem;
+}
+
+.education-entry h3 {
+  font-size: 2rem;
+  margin: .4rem 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.education-entry p {
+  margin: 0.4rem 0;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.education-bottom {
+  margin-bottom: 4rem;
+}
+
+.education-bottom p {
+  margin: 0.4rem 0;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.education-bottom h3 {
+  font-size: 2rem;
+  margin: .4rem 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.education-bottom h4 {
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+}
+
+.education-entry h4 {
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
 }

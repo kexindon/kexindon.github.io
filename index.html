@@ -39,14 +39,22 @@
       color: #111;
     }
 
-    .top-nav .nav-links a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #111;
-      font-weight: 500;
-      font-size: 1rem;
-      font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    }
+  .top-nav .nav-links a {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    transition: transform 0.3s ease-out;
+  }
+
+  .top-nav .nav-links a:hover {
+    transform: translateY(-3px);
+  }
+
 
     main.hero {
   min-height: calc(100vh - 80px);
@@ -198,8 +206,8 @@
       <h1>Kexin Dong 董可昕</h1>
       <p>Biology PhD Student @ MIT · Photographer</p>
       <div class="buttons">
+        <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" class="link" target="_blank">Full Publication</a>
         <a href="photography.html" class="view">View Photography</a>
-        <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" class="link" target="_blank">Connect on LinkedIn</a>
       </div>
     </section>
 
@@ -209,7 +217,43 @@
       <img src="profiles/3.jpeg" alt="Portrait 3" />
       <img src="profiles/4.jpeg" alt="Portrait 4" />
     </section>
+
+    <div class="footer">
+      <nav class="social">
+        <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/kexin8762/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/kexindon" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.xiaohongshu.com/user/profile/6023da2d00000000010025d6?xsec_token=ABHGU8V3jNfWEUjWkrBG5JbLaTIZuLs1_Oxzd9neptQKs%3D&xsec_source=pc_search" target="_blank"><i class="fas fa-book-open"></i></a>
+      </nav>
+    </div>
   </main>
+
+  <section class="education-section">
+    <h2>Education</h2>
+
+    <div class="education-entry">
+      <h3>Massachusetts Institute of Technology</h3>
+      <p>2024 – </p>
+      <h4>PhD in Biology</h4>
+      <h4><em>Presidential Fellow (2024–2025)</em></h4>
+    </div>
+
+    <div class="education-entry">
+      <h3>Massachusetts Institute of Technology</h3>
+      <p>2023 – 2024</p>
+      <h4>Visiting Student</h4>
+      
+    </div>
+
+    <div class="education-bottom">
+      <h3>University of Chinese Academy of Sciences</h3>
+      <p>2020 – 2024</p>
+      <h4>Bachelor of Science in Biology</h4>
+      <h4><em>Student Commencement Speaker</em></h4>
+    </div>
+
+  </section>
+
 </body>
 </html>
 
