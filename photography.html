@@ -1,65 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Photography | Kexin Dong</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/e03abbf7ed.js" crossorigin="anonymous"></script>
   <style>
-    
-    .quote-section{
-      min-height:100vh;        
-      padding-top:32vh;     
-      display:flex;
-      align-items:flex-start; 
-      justify-content:center;
-      text-align:center;
+    body {
+      margin: 0;
+      padding: 0;
     }
-    .quote-section h1{font-size:2rem;color:#fff;margin:0 6vw;line-height:1.4;opacity:0;animation:fadeIn 2s .4s forwards;}
-    @keyframes fadeIn{to{opacity:1;}}
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      box-sizing: border-box;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background:transparent;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .top-nav .logo {
+      font-size: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .top-nav .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .quote-section {
+      min-height: 100vh;
+      padding-top: 40vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      animation: fadeUp 1.5s ease-out forwards;
+      font-weight: 400;
+    }
+
+    .quote-section h1 {
+      font-size: 2rem;
+      color: #fff;
+      margin: 0 6vw;
+      line-height: 1.4;
+      opacity: 0;
+      animation: fadeUp 1.5s ease-out forwards;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      font-weight: 700;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .gallery-wrapper {
+      margin-top: 5vh;
+    }
   </style>
 </head>
 
-<body style="background:url('bg.jpeg') center/cover fixed;">
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="photography.html">Photography</a>
-  </nav>
+<body style="background: url('bg.jpeg') center/cover fixed;">
+
+  <!-- 🔝 顶部导航栏 -->
+  <div class="top-nav">
+    <div class="logo">Kexin Dong</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="publication.html">Publication</a>
+      <a href="photography.html">Photography</a>
+    </div>
+  </div>
 
   <section class="quote-section">
-    
-    <h1>Every day that passes from a different perspective,<br>
+    <h1>Every day that passes from a different perspective,<br />
         creates irreplaceable moments of the present.</h1>
   </section>
 
   <!-- Masonry 容器 -->
-<!-- 网格容器 -->
-<section class="gallery-wrapper">
-  <div id="col-left"  class="col"></div>
-  <div id="col-right" class="col"></div>
-</section>
-<script src="js/gallery.js"></script>
-</body>
+  <section class="gallery-wrapper">
+    <div id="col-left" class="col"></div>
+    <div id="col-right" class="col"></div>
+  </section>
 
-<footer class="site-footer">
-  <div class="brand">Kexin Dong</div>
+  <section class="quote-section">
+    <h1>To be continued...</h1>
+  </section>
 
-  <!-- 社媒按钮 -->
-  <nav class="social">
-    <a href="https://www.linkedin.com/in/kexin-dong-77196a296/"   target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://www.instagram.com/kexin8762/"         target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://github.com/kexindon"            target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.xiaohongshu.com/user/profile/6023da2d00000000010025d6?xsec_token=ABHGU8V3jNfWEUjWkrBG5JbLaTIZuLs1_Oxzd9neptQKs%3D&xsec_source=pc_search"  target="_blank" aria-label="Rednote"><i class="fas fa-book-open"></i></a>
-  </nav>
-</footer>
-</html>
+  <div class="fixed-footer">
+    <nav class="social">
+      <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/kexin8762/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/kexindon" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.xiaohongshu.com/user/profile/6023da2d00000000010025d6?xsec_token=ABHGU8V3jNfWEUjWkrBG5JbLaTIZuLs1_Oxzd9neptQKs%3D&xsec_source=pc_search" target="_blank"><i class="fas fa-book-open"></i></a>
+    </nav>
+  </div>
 
-<!-- gallery 容器结束标签后 -->
-
-<!-- 放在 </body> 前的脚本依旧 -->
-<script src="js/gallery.js"></script>
-
-<!-- 引入 Font Awesome（图标库）-->
-<script src="https://kit.fontawesome.com/e03abbf7ed.js" crossorigin="anonymous"></script>
+  <script src="js/gallery.js"></script>
 </body>
 </html>

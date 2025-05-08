@@ -149,3 +149,39 @@ body {
 .site-footer .social a:hover i {
   color: #000;
 }
+
+.fixed-footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: transparent;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.fixed-footer .social a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.fixed-footer .social i {
+  font-size: 16px;
+  color: #fff;
+}
+
+.fixed-footer .social a:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+
+.fixed-footer .social a:hover i {
+  color: #fff;
+}

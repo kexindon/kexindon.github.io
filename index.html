@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kexin Dong</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kexin Dong - PhD student @ MIT</title>
+  <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/e03abbf7ed.js" crossorigin="anonymous"></script>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Helvetica Neue', sans-serif;
+      overflow-x: hidden;
       background: #fff;
       color: #111;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    /* 🌟 新增顶部导航栏样式 */
+    .top-nav {
+      position: fixed;
+      max-width: 100%;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 8vh 4vw;
-      gap: 3vw;
+      padding: 1rem 4vw;
+      background: rgba(255, 255, 255, 0.8);
+      font-weight: bold;
     }
+
+    .top-nav .logo {
+      font-size: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .top-nav .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 1rem;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    main.hero {
+  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+}
 
     .intro {
       animation: fadeUp 1s ease-out forwards;
@@ -33,11 +67,12 @@
     .intro h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 700;
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 0.2s;
       opacity: 0;
     }
-
     .intro p {
       font-size: 1.2rem;
       color: #555;
@@ -45,6 +80,9 @@
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 0.4s;
       opacity: 0;
+      font-weight: 400;
+      font-size: 1.5rem;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
     }
 
     .intro .buttons {
@@ -61,6 +99,9 @@
       font-weight: bold;
       text-decoration: none;
       transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1rem;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
     }
 
     .intro .buttons a.view {
@@ -81,14 +122,14 @@
       display: grid;
       grid-template-columns: repeat(2, auto);
       grid-template-rows: repeat(2, auto);
-      gap: 0.3vw;
+      gap: 0.4vw;
       animation: fadeGrid 1.6s ease-out forwards;
       opacity: 0;
-      justify-content: start;
+      justify-content: end;
     }
 
     .photo-grid img {
-      width: 260px;
+      width: 240px;
       height: auto;
       object-fit: cover;
       animation: fadeIn 0.8s ease-out both;
@@ -117,20 +158,43 @@
     }
 
     @media (max-width: 768px) {
-      .hero {
+      main.hero {
         grid-template-columns: 1fr;
+        padding: 100px 4vw 2rem;
+        height: auto;
       }
       .photo-grid {
         grid-template-columns: 1fr;
         justify-items: center;
       }
+
+      .top-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .top-nav .nav-links {
+        display: flex;
+        flex-direction: row;
+      }
     }
   </style>
 </head>
+
 <body>
+  <!-- 🔝 顶部导航栏 -->
+  <div class="top-nav">
+    <div class="logo">Kexin Dong</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="publication.html">Publication</a>
+      <a href="photography.html">Photography</a>
+    </div>
+  </div>
+
   <main class="hero">
     <section class="intro">
-      <h1>Kexin Dong</h1>
+      <h1>Kexin Dong 董可昕</h1>
       <p>Biology PhD @ MIT · Photographer</p>
       <div class="buttons">
         <a href="photography.html" class="view">View Photography</a>
@@ -139,11 +203,12 @@
     </section>
 
     <section class="photo-grid">
-      <img src="profiles/1.jpeg" alt="Portrait 1">
-      <img src="profiles/2.jpeg" alt="Portrait 2">
-      <img src="profiles/3.jpeg" alt="Portrait 3">
-      <img src="profiles/4.jpeg" alt="Portrait 4">
+      <img src="profiles/1.jpeg" alt="Portrait 1" />
+      <img src="profiles/2.jpeg" alt="Portrait 2" />
+      <img src="profiles/3.jpeg" alt="Portrait 3" />
+      <img src="profiles/4.jpeg" alt="Portrait 4" />
     </section>
   </main>
 </body>
 </html>
+
