@@ -152,8 +152,9 @@ body {
 
 .fixed-footer {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 0vh;
+  right: 6vw;
+  justify-content: end;
   background: transparent;
   padding: 0.6rem 1rem;
   border-radius: 10px;
