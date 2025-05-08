@@ -150,6 +150,13 @@ body {
   color: #000;
 }
 
+.fixed-footer,
+.fixed-footer nav,
+.fixed-footer .social,
+.fixed-footer .social a {
+  background: transparent !important;
+}
+
 .fixed-footer {
   position: fixed;
   bottom: 0vh;
@@ -159,6 +166,7 @@ body {
   padding: 0.6rem 1rem;
   border-radius: 10px;
   z-index: 999;
+  backdrop-filter: none;
 }
 
 .fixed-footer .social a {
