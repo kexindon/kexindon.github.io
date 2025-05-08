@@ -2,50 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kexin Dong | Biology PhD & Photographer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kexin Dong</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/e03abbf7ed.js" crossorigin="anonymous"></script>
   <style>
-    .hero{padding:60px 0 40px;text-align:center;}
-    .hero h1{font-size:3rem;margin:0 0 12px;font-weight:700;}
-    .hero h2{font-size:1.3rem;font-weight:400;color:#666;margin:0 0 28px;}
-    .btn-link{display:inline-block;padding:10px 22px;margin:6px;border-radius:6px;text-decoration:none;font-weight:600;transition:background .25s;}
-    .btn-dark{background:#000;color:#fff;}
-    .btn-dark:hover{background:#333;}
-    .btn-light{background:#f0f0f0;color:#000;}
-    .btn-light:hover{background:#ddd;}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #fff;
+      color: #111;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 8vh 4vw;
+      gap: 3vw;
+    }
+
+    .intro {
+      animation: fadeUp 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .intro p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .intro .buttons {
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .intro .buttons a {
+      display: inline-block;
+      padding: 0.8em 1.4em;
+      margin: 0 0.5em;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .intro .buttons a.view {
+      background: #000;
+      color: #fff;
+    }
+
+    .intro .buttons a.link {
+      border: 1px solid #000;
+      color: #000;
+    }
+
+    .intro .buttons a:hover {
+      transform: translateY(-3px);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, auto);
+      gap: 0.3vw;
+      animation: fadeGrid 1.6s ease-out forwards;
+      opacity: 0;
+      justify-content: start;
+    }
+
+    .photo-grid img {
+      width: 260px;
+      height: auto;
+      object-fit: cover;
+      animation: fadeIn 0.8s ease-out both;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .photo-grid img:nth-child(1) { animation-delay: 0.2s; }
+    .photo-grid img:nth-child(2) { animation-delay: 0.4s; }
+    .photo-grid img:nth-child(3) { animation-delay: 0.6s; }
+    .photo-grid img:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeGrid {
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .photo-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="photography.html">Photography</a>
-  </nav>
+  <main class="hero">
+    <section class="intro">
+      <h1>Kexin Dong</h1>
+      <p>Biology PhD @ MIT · Photographer</p>
+      <div class="buttons">
+        <a href="photography.html" class="view">View Photography</a>
+        <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" class="link" target="_blank">Connect on LinkedIn</a>
+      </div>
+    </section>
 
-  <header class="hero">
-    <h1>Kexin Dong</h1>
-    <h2>Biology PhD @ MIT • Photographer</h2>
-
-    <a class="btn-dark" href="https://www.linkedin.com/in/kexindon" target="_blank">LinkedIn</a>
-    <a class="btn-light" href="photography.html">📸 View Photography</a>
-  </header>
-
-  <section style="line-height:1.6;max-width:600px;margin:0 auto 60px;">
-    <p>
-      I’m a first‑year PhD student focusing on genetics and cancer evolution.
-      Beyond the lab, I explore the world through my Fujifilm lens, capturing fleeting moments that science often overlooks.
-    </p>
-  </section>
-
-  <footer class="site-footer">
-    <div style="text-align:center;margin:60px 0;color:#aaa;font-size:.9rem;">© 2025 Kexin Dong. Built with GitHub Pages & ❤︎</div>
-    <!-- 社媒按钮 -->
-    <nav class="social">
-      <a href="https://www.linkedin.com/in/kexin-dong-77196a296/"   target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/kexin8762/"         target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://github.com/kexindon"            target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.xiaohongshu.com/user/profile/6023da2d00000000010025d6?xsec_token=ABHGU8V3jNfWEUjWkrBG5JbLaTIZuLs1_Oxzd9neptQKs%3D&xsec_source=pc_search"  target="_blank" aria-label="Rednote"><i class="fas fa-book-open"></i></a>
-    </nav>
-  </footer>
+    <section class="photo-grid">
+      <img src="profiles/1.jpeg" alt="Portrait 1">
+      <img src="profiles/2.jpeg" alt="Portrait 2">
+      <img src="profiles/3.jpeg" alt="Portrait 3">
+      <img src="profiles/4.jpeg" alt="Portrait 4">
+    </section>
+  </main>
 </body>
 </html>

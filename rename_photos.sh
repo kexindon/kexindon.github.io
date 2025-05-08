@@ -1,42 +1,46 @@
 #!/usr/bin/env bash
-# rename_photos.sh
+# rename_photos.sh - Shuffle and rename all photos to 0001.jpeg, 0002.jpeg, ...
 
 set -euo pipefail
 
 PHOTO_DIR="photos"
 cd "$PHOTO_DIR"
 
-shopt -s nocaseglob       # 让 *.jpg 同时匹配 .jpg .JPG .Jpeg 等
-exts=("*.jpeg" "*.jpg")   # 支持的后缀
+shopt -s nocaseglob
 
-max_num=0
-for f in [0-9][0-9][0-9][0-9].jpeg; do
-  [[ -e "$f" ]] || continue
-  n="${f%%.jpeg}"
-  (( n > max_num )) && max_num=$n
-done
-
+exts=("*.jpg" "*.jpeg")
 temp_suffix=".tmp_rename"
-to_rename=()
 
+all_files=()
 for pattern in "${exts[@]}"; do
   for f in $pattern; do
-    [[ -e "$f" ]] || continue
-    if [[ "$f" =~ ^[0-9]{4}\.jpe?g$ ]]; then
-      continue                
-    fi
-    mv "$f" "${f}${temp_suffix}" 
-    to_rename+=("${f}${temp_suffix}")
+    [[ -f "$f" ]] && all_files+=("$f")
   done
 done
 
-for tmp in "${to_rename[@]}"; do
-  printf -v new_name "%04d.jpeg" $(( ++max_num ))
-  mv "$tmp" "$new_name"
-  echo "Renamed $tmp -> $new_name"
+if [[ ${#all_files[@]} -eq 0 ]]; then
+  echo "No image files found."
+  exit 0
+fi
+
+shuffled=($(printf '%s\n' "${all_files[@]}" | gshuf))
+
+for f in "${shuffled[@]}"; do
+  mv "$f" "${f}${temp_suffix}"
 done
 
-echo "Done. Total photos renamed: ${#to_rename[@]}"
-# to run:
+i=1
+for f in *${temp_suffix}; do
+  printf -v new_name "%04d.jpeg" "$i"
+  mv "$f" "$new_name"
+  echo "Renamed $f -> $new_name"
+  ((i++))
+done
+
+echo "Done. Total photos renamed: $((i - 1))"
+
+
+# to run this script:
+
 # chmod +x rename_photos.sh
 # ./rename_photos.sh
