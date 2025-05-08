@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# rename_photos.sh - Shuffle and rename all photos to 0001.jpeg, 0002.jpeg, ...
+# rename_photos.sh - Rename photos as 0001.jpeg, 0002.jpeg in a shuffled order based on hash
 
 set -euo pipefail
 
@@ -11,6 +11,7 @@ shopt -s nocaseglob
 exts=("*.jpg" "*.jpeg")
 temp_suffix=".tmp_rename"
 
+# Step 1: Collect files
 all_files=()
 for pattern in "${exts[@]}"; do
   for f in $pattern; do
@@ -23,14 +24,25 @@ if [[ ${#all_files[@]} -eq 0 ]]; then
   exit 0
 fi
 
-shuffled=($(printf '%s\n' "${all_files[@]}" | gshuf))
-
-for f in "${shuffled[@]}"; do
-  mv "$f" "${f}${temp_suffix}"
+# Step 2: Temporarily rename to avoid overwrite
+for f in "${all_files[@]}"; do
+  mv "$f" "$f$temp_suffix"
 done
 
+# Step 3: Sort by md5 hash of original filename
+sorted_files=()
+for f in *"$temp_suffix"; do
+  hash=$(echo "$f" | md5)  # macOS uses `md5`, not `md5sum`
+  sorted_files+=("$hash $f")
+done
+
+IFS=$'\n' sorted_files_sorted=($(printf "%s\n" "${sorted_files[@]}" | sort))
+unset IFS
+
+# Step 4: Rename based on sorted order
 i=1
-for f in *${temp_suffix}; do
+for line in "${sorted_files_sorted[@]}"; do
+  f=$(echo "$line" | cut -d' ' -f2-)
   printf -v new_name "%04d.jpeg" "$i"
   mv "$f" "$new_name"
   echo "Renamed $f -> $new_name"
@@ -38,7 +50,6 @@ for f in *${temp_suffix}; do
 done
 
 echo "Done. Total photos renamed: $((i - 1))"
-
 
 # to run this script:
 
