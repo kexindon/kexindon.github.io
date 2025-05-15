@@ -302,3 +302,98 @@ body {
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
   font-weight: 500;
 }
+
+.publication-section {
+  padding: 6vh 6vw;
+  background: #fff;
+  color: #111;
+}
+
+.publication-section h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+
+.publication-entry {
+  margin-bottom: 2.5rem;
+}
+
+.publication-entry h3 {
+  font-size: 2rem;
+  margin: .4rem 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.publication-entry p {
+  margin: 0.4rem 0;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.publication-bottom {
+  margin-bottom: 4rem;
+}
+
+.publication-bottom p {
+  margin: 0.4rem 0;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.publication-bottom h3 {
+  font-size: 2rem;
+  margin: .4rem 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.publication-bottom h4 {
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+}
+
+.publication-entry h4 {
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+}
+
+
+.publication-section .buttons {
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.publication-section .buttons a {
+  display: inline-block;
+  padding: 0.8em 1.4em;
+  margin: 0 0.5em;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+}
+
+.publication-section .buttons a.view {
+  background: #000;
+  color: #fff;
+}
+
+.publication-section .buttons a.link {
+  border: 1px solid #000;
+  color: #000;
+}
+
+.publication-section .buttons a:hover {
+  transform: translateY(-3px);
+}
