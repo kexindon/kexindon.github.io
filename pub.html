@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publication - Kexin Dong</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/e03abbf7ed.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: #fff;
+      color: #111;
+    }
+
+    /* 🌟 新增顶部导航栏样式 */
+    .top-nav {
+      position: fixed;
+      max-width: 100%;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 4vw;
+      background: rgba(255, 255, 255, 0.8);
+      font-weight: bold;
+    }
+
+    .top-nav .logo {
+      font-size: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #111;
+    }
+
+  .top-nav .nav-links a {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    margin-left: .5rem;
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    transition: transform 0.3s ease-out;
+  }
+
+  .top-nav .nav-links a:hover {
+    transform: translateY(-3px);
+  }
+
+
+    main.hero2 {
+  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  display: grid;
+  align-items: start;
+  justify-content: space-between;
+}
+
+    .intro {
+      animation: fadeUp 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 700;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+    .intro p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+      font-weight: 400;
+      font-size: 1.5rem;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    .intro .buttons {
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .intro .buttons a {
+      display: inline-block;
+      padding: 0.8em 1.4em;
+      margin: 0 0.5em;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1rem;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    .intro .buttons a.view {
+      background: #000;
+      color: #fff;
+    }
+
+    .intro .buttons a.link {
+      border: 1px solid #000;
+      color: #000;
+    }
+
+    .intro .buttons a:hover {
+      transform: translateY(-3px);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, auto);
+      gap: 0.4vw;
+      animation: fadeGrid 1.6s ease-out forwards;
+      opacity: 0;
+      justify-content: end;
+    }
+
+    .photo-grid img {
+      width: 16vw;
+      height: auto;
+      object-fit: cover;
+      animation: fadeIn 0.8s ease-out both;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .photo-grid img:nth-child(1) { animation-delay: 0.2s; }
+    .photo-grid img:nth-child(2) { animation-delay: 0.4s; }
+    .photo-grid img:nth-child(3) { animation-delay: 0.6s; }
+    .photo-grid img:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeGrid {
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      main.hero {
+        grid-template-columns: 1fr;
+        padding: 100px 4vw 2rem;
+        height: auto;
+      }
+      .photo-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .top-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .top-nav .nav-links {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 🔝 顶部导航栏 -->
+    <div class="top-nav">
+      <div class="logo">Kexin Dong</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="pub.html">Publication</a>
+        <a href="photography.html">Photography</a>
+      </div>
+    </div>
+
+    <main class="hero2">
+        <section class="pub">
+          <h2>Publication</h2>
+          <div>
+            <h3><li>
+              Gould, S. I. <em>et al.</em>
+              <strong>High-throughput evaluation of genetic variants with prime editing sensor libraries.</strong>
+              <em>Nat. Biotechnol.</em> 1–15 (2024) ·
+              <a href="https://doi.org/10.1038/s41587-024-02172-9" target="_blank">doi:10.1038/s41587-024-02172-9</a>
+            </li>
+            </h3>
+
+            <h3><li>
+                Acosta, J. <em>et al.</em>
+              <strong>Multiplexed in vivo base editing identifies functional gene-variant-context interactions.</strong>
+              <em>bioRxiv</em> (2025) ·
+              <a href="https://doi.org/10.1101/2025.02.23.639770" target="_blank">doi:10.1101/2025.02.23.639770</a>
+            </li>
+            </h3>
+            <h3>
+            <li>
+              Dong, K., Gould, S. I., Li, M. & Rivera, F. J. S.
+              <strong>Computational modeling of human genetic variants in mice.</strong>
+              <em>bioRxiv</em> (2025) ·
+              <a href="https://doi.org/10.1101/2025.02.23.639784" target="_blank">doi:10.1101/2025.02.23.639784</a>
+            </li>
+            </h3>
+          </div>
+        </section>
+    
+        <div class="footer">
+          <nav class="social">
+            <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/kexin8762/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/kexindon" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.xiaohongshu.com/user/profile/6023da2d00000000010025d6?xsec_token=ABHGU8V3jNfWEUjWkrBG5JbLaTIZuLs1_Oxzd9neptQKs%3D&xsec_source=pc_search" target="_blank"><i class="fas fa-book-open"></i></a>
+          </nav>
+        </div>
+      </main>
+</body>  

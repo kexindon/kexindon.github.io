@@ -6,6 +6,7 @@
   <title>Kexin Dong - PhD student @ MIT</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/e03abbf7ed.js" crossorigin="anonymous"></script>
+  <script src="js/publication-gallery.js"></script>
   <style>
     body {
       margin: 0;
@@ -152,6 +153,34 @@
     .photo-grid img:nth-child(3) { animation-delay: 0.6s; }
     .photo-grid img:nth-child(4) { animation-delay: 0.8s; }
 
+
+    .photo-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      grid-template-rows: repeat(1, auto);
+      gap: 0.4vw;
+      animation: fadeGrid 1.6s ease-out forwards;
+      opacity: 0;
+      justify-content: start;
+    }
+
+    .photo-grid-2 img {
+      width: 16vw;
+      height: auto;
+      object-fit: cover;
+      animation: fadeIn 0.8s ease-out both;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .photo-grid-2 img:nth-child(1) { animation-delay: 0.2s; }
+    .photo-grid-2 img:nth-child(2) { animation-delay: 0.4s; }
+    .photo-grid-2 img:nth-child(3) { animation-delay: 0.6s; }
+    .photo-grid-2 img:nth-child(4) { animation-delay: 0.8s; }
+    .photo-grid-2 img:nth-child(5) { animation-delay: 1s; }
+
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
@@ -196,7 +225,7 @@
     <div class="logo">Kexin Dong</div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="publication.html">Publication</a>
+      <a href="pub.html">Publication</a>
       <a href="photography.html">Photography</a>
     </div>
   </div>
@@ -206,7 +235,7 @@
       <h1>Kexin Dong 董可昕</h1>
       <p>Biology PhD Student @ MIT · Photographer</p>
       <div class="buttons">
-        <a href="https://www.linkedin.com/in/kexin-dong-77196a296/" class="link" target="_blank">Full Publication</a>
+        <a href="pub.html" class="link" target="_blank">Full Publication</a>
         <a href="photography.html" class="view">View Photography</a>
       </div>
     </section>
@@ -229,39 +258,100 @@
   </main>
 
   <section class="education-section">
-    <h2>Education</h2>
-
-    <div class="education-entry">
+    <h2 class="fade-up" style="animation-delay: 0.2s">Education</h2>
+  
+    <div class="education-entry fade-up" style="animation-delay: 0.4s">
       <h3>Massachusetts Institute of Technology</h3>
       <p>2024 – </p>
       <h4>PhD in Biology</h4>
       <h4><em>Presidential Fellow (2024–2025)</em></h4>
     </div>
-
-    <div class="education-entry">
+  
+    <div class="education-entry fade-up" style="animation-delay: 0.6s">
       <h3>Massachusetts Institute of Technology</h3>
       <p>2023 – 2024</p>
       <h4>Visiting Student</h4>
-      
     </div>
-
-    <div class="education-bottom">
+  
+    <div class="education-bottom fade-up" style="animation-delay: 0.8s">
       <h3>University of Chinese Academy of Sciences</h3>
       <p>2020 – 2024</p>
       <h4>Bachelor of Science in Biology</h4>
       <h4><em>Student Commencement Speaker</em></h4>
     </div>
   </section>
+  
+  <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
 
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = parseFloat(el.dataset.delay) || 0;
+  
+            setTimeout(() => {
+              el.classList.add("in-view");
+            }, delay * 1000);
+  
+            observer.unobserve(el); // 只触发一次
+          }
+        });
+      }, { threshold: 0.1 });
+  
+      document.querySelectorAll(".fade-up").forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+  
   <section class="publication-section">
-    <h2>Publication Highlights</h2>
-    <div class="gallery-wrapper">
-      <div id="col-left" class="col"></div>
-      <div id="col-right" class="col"></div>
+    <h2 class="fade-up" style="animation-delay: 0.2s">Publication Highlights</h2>
+    <div class="buttons education-entry fade-up" style="animation-delay: 0.6s">
+      <a href="pub.html" class="link" target="_blank">Full Publication</a>
+    </div>
+    <div style="height:2rem;"></div>
+    <div class="gallery-wrapper-wide education-entry fade-up" style="animation-delay: 0.8s">
+      <div id="col-0" class="col"></div>
+      <div id="col-1" class="col"></div>
+      <div id="col-2" class="col"></div>
+      <div id="col-3" class="col"></div>
     </div>
   </section>
-</body>
 
-<script src="js/publication-gallery.js"></script>
+  <section class="phoove-section">
+    <h2 class="fade-up" style="animation-delay: 0.2s">Photography</h2>
+    <div class="buttons education-entry fade-up" style="animation-delay: 0.4s">
+      <a href="photography.html" class="view">View Photography</a>
+    </div>
+    <section class="photo-grid-2 education-entry fade-up" style="animation-delay: 0.6s">
+      <img src="phoove/0001.jpeg" alt="Portrait 1" />
+      <img src="phoove/0002.jpeg" alt="Portrait 2" />
+      <img src="phoove/0003.jpeg" alt="Portrait 3" />
+      <img src="phoove/0004.jpeg" alt="Portrait 4" />
+      <img src="phoove/0005.jpeg" alt="Portrait 5" />
+    </section>
+    <div class="education-entry fade-up" style="animation-delay: 0.8s"> 
+      <p >Photography is a way of feeling, of touching, of loving. What you have caught on film is captured forever... It remembers little things, long after you have forgotten everything.</p>
+    </div>
+    <div class="education-entry fade-up" style="animation-delay: 1s"> 
+      <h4>Device: FUJIFILM X-S20</h4>
+      <h4>Lens: XF 16-50mm; XF 70-300mm</h4>
+    </div>
+  </section>
+
+</body>
 </html>
 
